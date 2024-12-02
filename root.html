@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m乗根n 計算ツール</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* 全体のスタイル */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #495057;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #495057;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>m乗根n \(m\sqrt{n}\) 計算ツール</h1>
+        <input type="number" id="m" placeholder="m (例: 3)" step="any">
+        <input type="number" id="n" placeholder="n (例: 27)" step="any">
+        <button onclick="calculate()">計算</button>
+        <div class="result" id="result"></div>
+        <div class="footer">© 2024 ThreeIslands</div>
+    </div>
+
+    <script>
+        function calculate() {
+            const m = parseFloat(document.getElementById("m").value);
+            const n = parseFloat(document.getElementById("n").value);
+
+            if (isNaN(m) || isNaN(n)) {
+                document.getElementById("result").textContent = "有効な数値を入力してください。";
+                return;
+            }
+
+            if (m === 0) {
+                document.getElementById("result").textContent = "mは0以外の値を入力してください。";
+                return;
+            }
+
+            const result = Math.pow(n, 1 / m);
+            document.getElementById("result").textContent = `結果: ${result}`;
+        }
+    </script>
+</body>
+</html>
